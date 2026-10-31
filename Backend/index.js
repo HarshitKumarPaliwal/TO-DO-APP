@@ -174,9 +174,16 @@ const startServer = async () => {
 
     console.log("MongoDB Atlas Connected Successfully");
 
-    app.listen(3200, () => {
-      console.log("Backend running on port 3200");
-    });
+    // app.listen(3200, () => {
+    //   console.log("Backend running on port 3200");
+    // });
+
+
+    const PORT = process.env.PORT || 3200;
+
+app.listen(PORT, () => {
+  console.log(`Backend running on port ${PORT}`);
+});
 
   } catch (error) {
     console.log("MongoDB Connection Error:", error.message);

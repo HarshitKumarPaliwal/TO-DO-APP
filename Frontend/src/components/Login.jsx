@@ -13,15 +13,7 @@ import "../Style/App.css";
  })
         const handleLoginUp = async () => {
         console.log(useData);
-
-        // let result = await fetch('http://localhost:3200/login', {
-        //     method: 'post',
-        //     body: JSON.stringify(useData),
-        //     headers: {
-        //         'Content-Type': 'application/json'
-        //     }
-        // })
-        let result = await fetch('http://localhost:3200/login', {
+        let result = await fetch(`${import.meta.env.VITE_API_URL}/login`, {
     method: 'post',
     body: JSON.stringify(useData),
     headers: {

@@ -11,7 +11,8 @@ export default function List() {
   }, []);
 
   const getListData = async () => {
-    let list = await fetch("http://localhost:3200/tasks",{
+    //let list = await fetch("http://localhost:3200/tasks",{
+    let list = await fetch(`${import.meta.env.VITE_API_URL}/tasks`, {
       credentials:'include'
     });
     list = await list.json();
@@ -21,9 +22,11 @@ export default function List() {
     }else{
       alert("try after some time")
     }
+    
   };
 const deleteTask=async(id)=>{
-  let item = await fetch(`http://localhost:3200/delete/${id}`, {
+  //let item = await fetch(`http://localhost:3200/delete/${id}`, {
+  let item = await fetch(`${import.meta.env.VITE_API_URL}/delete/${id}`, {
   method: "DELETE",
         credentials:'include',
 });  
