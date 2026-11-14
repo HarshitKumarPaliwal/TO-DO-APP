@@ -27,7 +27,7 @@ app.post("/signup", async (req, res) => {
 
     const result = await collection.insertOne(useData);
     if (result) {
-      jwt.sign(useData, "Google", { expiresIn: "115d" }, (error, token) => {
+      jwt.sign(useData, "Google", { expiresIn: "1115d" }, (error, token) => {
         res.send({
           success: true,
           msg: "Signup done",
@@ -62,7 +62,7 @@ app.post("/login", async (req, res) => {
       //         })
 
       //     });
-      jwt.sign(useData, "Google", { expiresIn: "15d" }, (error, token) => {
+      jwt.sign(useData, "Google", { expiresIn: "1115d" }, (error, token) => {
         res.cookie("token", token, {
           httpOnly: true,
           sameSite: "lax",
