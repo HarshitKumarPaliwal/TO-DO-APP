@@ -8,14 +8,33 @@ import { collectionName, connection } from "./dbconfig.js";
 
 import jwt from "jsonwebtoken";
 import cookieParser from "cookie-parser";
+// const app = e();
+// app.use(e.json());
+// app.use(
+//   cors({
+//     origin: process.env.FRONTEND_URL,
+//     credentials: true,
+//   }),
+// );
+
+
 const app = e();
+
+app.use(cors({
+  origin: function (origin, callback) {
+    const allowedOrigins = process.env.FRONTEND_URL.split(",");
+
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+  credentials: true,
+}));
+
 app.use(e.json());
-app.use(
-  cors({
-    origin: process.env.FRONTEND_URL,
-    credentials: true,
-  }),
-);
+app.use(cookieParser());
 app.use(cookieParser());
 
 
